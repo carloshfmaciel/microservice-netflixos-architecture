@@ -205,7 +205,6 @@ Obs: Como estamos rodando tudo no mesmo host, para evitar conflito de portas, te
 Abaixo, arquivo bootstrap.yml:
 
 
-*Como aqui estamos simulando alta disponibilidade, temos dois config-servers setados. Caso o primeiro falhe, ele busca a configuração no segundo. Também informamos usuário e senha definidos no config-server para o microserviço se autenticar.*
 ```yml
 spring:
   application:
@@ -217,3 +216,19 @@ spring:
       password: config
       fail-fast: true
 ```
+*Como aqui estamos simulando alta disponibilidade, temos dois config-servers setados. Caso o primeiro falhe, ele busca a configuração no segundo. Também informamos usuário e senha definidos no config-server para o microserviço se autenticar.*
+
+### Executando
+
+1.  Na raiz do project eureka-server, build o projeto:
+```
+mvn clean install
+```
+
+2.  Execute o projeto (No exemplo abaixo, para simularmos alta disponibilidade, estaremos startando três instâncias. Cada instância subirá em uma porta.):
+```
+java -jar -Dspring.profiles.active=pre1 target\eureka-server-1.0.0-SNAPSHOT.jar 
+java -jar -Dspring.profiles.active=pre2 target\eureka-server-1.0.0-SNAPSHOT.jar 
+java -jar -Dspring.profiles.active=pre3 target\eureka-server-1.0.0-SNAPSHOT.jar 
+```
+
