@@ -24,7 +24,7 @@ Microserviço que centraliza todas as configurações(yml ou properties), de tod
 Obs: Estamos adicionando o spring security, para que todo e qualquer microserviço que quiser consumir alguma configuração dele, tenha que se autenticar.
 
 
-2.  Na classe anotada com **@SpringBootApplication**, adicione a anotação **@EnableConfigServer**.
+2.  Na classe anotada com **@SpringBootApplication** , adicione a anotação **@EnableConfigServer**.
 
 ```
 @EnableConfigServer
