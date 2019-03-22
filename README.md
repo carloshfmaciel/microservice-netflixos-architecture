@@ -91,9 +91,9 @@ Abaixo, o repositório com os arquivos de configuração que serão acessados pe
 
 
 
-1.  Accesse a url do config-server, seguido do nome de um dos arquivos presentes no repositório, acrescido do profile, no caso "-pre":
+1.  Accesse a url do config-server, seguido do nome de um dos arquivos presentes no repositório, acrescido do profile, no caso "/pre":
 ```
-http://localhost:8888/order-service-pre.yml
+http://localhost:8888/order-service/pre
 ```
 
 
@@ -229,6 +229,17 @@ mvn clean install
 ```
 java -jar -Dspring.profiles.active=pre1 target\eureka-server-1.0.0-SNAPSHOT.jar 
 java -jar -Dspring.profiles.active=pre2 target\eureka-server-1.0.0-SNAPSHOT.jar 
-java -jar -Dspring.profiles.active=pre3 target\eureka-server-1.0.0-SNAPSHOT.jar 
 ```
+
+### Testando
+
+1.  Como definimos nos profiles, no arquivo eureka-server.yml, as portas 8761 e 8762, basta acessarmos no browser:
+```
+http://localhost:8761
+http://localhost:8762
+```
+
+3.  Pronto! Percebemos que ambos os servers subiram e se auto registraram um no outro. Dessa forma, quando algum serviço se autoregistrar em alguma das instâncias eureka, o registro será replicado para todas as instâncias eureka.
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/e4fa16fb6d554d6d55c991e33d777981/eureka_screen.PNG)
 
