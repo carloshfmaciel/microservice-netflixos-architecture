@@ -75,7 +75,7 @@ spring:
 mvn clean install
 ```
 
-2.  Execute o projeto:
+2.  Execute o projeto (No exemplo abaixo, para simularmos alta disponibilidade, estaremos startando duas instâncias):
 ```
 java -jar target\config-server-1.0.0-SNAPSHOT.jar --server.port=8888
 java -jar target\config-server-1.0.0-SNAPSHOT.jar --server.port=8889
@@ -105,3 +105,6 @@ http://localhost:8888/order-service-pre.yml
 3.  Pronto! Conseguimos através de uma requisição GET, acessar o conteúdo do arquivo order-service.yml
 
 ![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/a0bce95a7738bf6b30688b6540adc1e0/resultado_config_server.PNG)
+
+
+# Spring Cloud Netflix Eureka - Service Registry / Service Discovery
