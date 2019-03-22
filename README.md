@@ -9,7 +9,7 @@ Microserviço que centraliza todas as configurações(yml ou properties), de tod
 
 1.  adicione as dependência abaixo:
 
-```
+```xml
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-config-server</artifactId>
