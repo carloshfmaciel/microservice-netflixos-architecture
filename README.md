@@ -393,5 +393,30 @@ Para testarmos tudo, iremos utilizar um microserviço que:
 
 Link: https://gitlab.com/s4bdigital/devops/microservices-poc/tree/master/order-service
 
-Abaixo, configuração do microservico order-service
+Abaixo, configuração do microservico order-service:
 
+*Obs: Como estaremos rodando duas instâncias na mesma máquina e queremos simular o load balance entre as duas instâncias, é importante que elas possuam o mesmo nome. Por esta razão não estaremos usando profile. Para evitar conflito de portas, setamos como **0**, dessa forma o Spring verifica uma porta livre no host e atribui para o serviço.*
+```yml
+server:
+  port: 0
+  
+spring:
+  application:
+    name: order-service-pre
+  profiles: pre
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka,http://eureka:eureka@127.0.0.1:8762/eureka,http://eureka:eureka@127.0.0.1:8763/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-same-zone-eureka: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+```
