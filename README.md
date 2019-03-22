@@ -90,7 +90,13 @@ Abaixo, o repositório com os arquivos de configuração que serão acessados pe
 ![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/a80038f1666964a9f07e85cae841c79a/git_config_files.PNG)
 
 
-Accesse a url do config-server, seguido do nome de um dos arquivos presentes no repositório:
+
+1.  Accesse a url do config-server, seguido do nome de um dos arquivos presentes no repositório:
 ```
 http://localhost:8888/order-service-pre.yml
 ```
+
+
+2.  Como adicionamos o spring security no config-server, será solicitado login e senha para acessar. Digite usuario: config e senha: config, conforme definido no yml do config-server.
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/f39c49f23dbbc1e661d9e2024e77ab39/login_config_server.PNG)
