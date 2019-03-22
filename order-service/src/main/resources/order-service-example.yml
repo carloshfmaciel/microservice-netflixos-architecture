@@ -1,0 +1,50 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-service-pre
+  profiles: pre
+   
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka,http://eureka:eureka@127.0.0.1:8762/eureka,http://eureka:eureka@127.0.0.1:8763/eureka       
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}      
+    prefer-same-zone-eureka: true  
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  
+  endpoint:
+    health:
+      show-details: ALWAYS     
+    
+---
+
+server:
+  port: 0
+
+spring:
+  application:
+    name: order-service-stg
+  profiles: stg
+   
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://127.0.0.1:8761/eureka,http://127.0.0.1:8762/eureka,http://127.0.0.1:8763/eureka  
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  
+  endpoint:
+    health:
+      show-details: ALWAYS    
