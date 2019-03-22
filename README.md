@@ -108,3 +108,11 @@ http://localhost:8888/order-service-pre.yml
 
 
 # Spring Cloud Netflix Eureka - Service Registry / Service Discovery
+
+Eureka implementa os patterns service registry/service discovery.
+
+Em uma arquitetura básica, temos um ou mais servidores para registro, ou seja, onde os microserviços irão se registrar.
+
+### Configurando Eureka Server
+
+
