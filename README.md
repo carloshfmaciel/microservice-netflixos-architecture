@@ -380,3 +380,14 @@ java -jar -Dspring.profiles.active=pre1 target\api-gateway-1.0.0-SNAPSHOT.jar
 java -jar -Dspring.profiles.active=pre2 target\api-gateway-1.0.0-SNAPSHOT.jar 
 ```
 
+# Testando tudo
+
+Para testarmos tudo, iremos utilizar um microserviço que:
+
+* Carrega sua configuração através do config-server
+* Se registra no Eureka, informando seu application-name e seu ip
+* Disponibiliza um endpoint GET que retorna basicamente o hostname e a porta que o mesmo está rodando
+
+Link: https://gitlab.com/s4bdigital/devops/microservices-poc/tree/master/order-service
+
+
