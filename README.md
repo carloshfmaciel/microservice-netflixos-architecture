@@ -146,3 +146,56 @@ public class EurekaServiceApplication {
 }
 ```
 
+
+3.  A configuração do eureka, ficará no repositório git que será acessado e servido pelo config server anteriormente configurado. 
+Ao invés de application.yml o arquivo deve possuir o nome da aplicação(server.application.name), no caso aqui será eureka-server.yml
+
+Conteúdo do arquivo:
+
+```yml
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-server-pre1
+  profiles: pre1
+  security:
+    user:
+      name: eureka
+      password: eureka
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka,http://eureka:eureka@127.0.0.1:8762/eureka,http://eureka:eureka@127.0.0.1:8763/eureka
+    healthcheck:
+      enabled: true
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      
+---
+
+server:
+  port: 8762
+spring:
+  application:
+    name: eureka-server-pre2
+  profiles: pre2
+  security:
+    user:
+      name: eureka
+      password: eureka
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka,http://eureka:eureka@127.0.0.1:8762/eureka,http://eureka:eureka@127.0.0.1:8763/eureka
+    healthcheck:
+      enabled: true
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+```
+Obs: Como estamos rodando tudo no mesmo host, para evitar conflito de portas, temos dois profiles, simplesmente para subir com duas portas diferentes. Se estivéssemos rodando em hosts diferentes, poderíamos trabalhar apenas com um profile.
