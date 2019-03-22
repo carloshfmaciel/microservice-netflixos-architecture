@@ -1,12 +1,13 @@
 # Arquitetura Microservices - Spring Cloud Netflix
 
-Spring Cloud Config Server
+# Spring Cloud Config Server
 
 Microserviço que centraliza todas as configurações(yml ou properties), de todos os microserviços.
 
-Configurando
+## Configurando
 
-1 - adicione as dependência abaixo:
+
+1.  adicione as dependência abaixo:
 
 ```
 <dependency>
@@ -22,10 +23,11 @@ Configurando
 
 Obs: Estamos adicionando o spring security, para que todo e qualquer microserviço que quiser consumir alguma configuração dele, tenha que se autenticar.
 
-2 - Na classe anotada com **@SpringBootApplication**, adicione a anotação **@EnableConfigServer**.
+
+2.  Na classe anotada com **@SpringBootApplication**, adicione a anotação **@EnableConfigServer**.
 
 ```
-**@EnableConfigServer**
+@EnableConfigServer
 @SpringBootApplication
 public class ConfigServerApplication {
 
@@ -36,7 +38,8 @@ public class ConfigServerApplication {
 }
 ```
 
-3 - Abaixo como deve ficar o application yml:
+
+3.  Abaixo como deve ficar o application yml:
 
 ```yml
 server:
