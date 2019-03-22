@@ -225,7 +225,7 @@ spring:
 mvn clean install
 ```
 
-2.  Execute o projeto (No exemplo abaixo, para simularmos alta disponibilidade, estaremos startando três instâncias. Cada instância subirá em uma porta.):
+2.  Execute o projeto (No exemplo abaixo, para simularmos alta disponibilidade, estaremos startando duas instâncias. Cada instância subirá em uma porta.):
 ```
 java -jar -Dspring.profiles.active=pre1 target\eureka-server-1.0.0-SNAPSHOT.jar 
 java -jar -Dspring.profiles.active=pre2 target\eureka-server-1.0.0-SNAPSHOT.jar 
@@ -374,9 +374,9 @@ spring:
 mvn clean install
 ```
 
-2.  Execute o projeto (No exemplo abaixo, para simularmos alta disponibilidade, estaremos startando três instâncias. Cada instância subirá em uma porta.):
+2.  Execute o projeto (No exemplo abaixo, para simularmos alta disponibilidade, estaremos startando duas instâncias. Cada instância subirá em uma porta.):
 ```
-java -jar -Dspring.profiles.active=pre1 target\eureka-server-1.0.0-SNAPSHOT.jar 
-java -jar -Dspring.profiles.active=pre2 target\eureka-server-1.0.0-SNAPSHOT.jar 
+java -jar -Dspring.profiles.active=pre1 target\api-gateway-1.0.0-SNAPSHOT.jar 
+java -jar -Dspring.profiles.active=pre2 target\api-gateway-1.0.0-SNAPSHOT.jar 
 ```
 
