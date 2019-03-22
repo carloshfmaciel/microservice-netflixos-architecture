@@ -243,3 +243,140 @@ http://localhost:8762
 
 ![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/e4fa16fb6d554d6d55c991e33d777981/eureka_screen.PNG)
 
+
+# Spring Cloud Netflix Zuul - Api Gateway
+
+Zuul implementa o pattern de API-Gateway. Funciona como um centralizador, interceptando as requisições e encaminhando as mesmas para os microserviços. Funciona integrado com o Eureka(Service Registry/Service Discovery), como também com o Ribbon(Load Balancer). 
+Possui filtros implementáveis, com os quais podemos interceptar as requisições antes e depois do routing, possibilitando aplicar recursos de segurança e coleta de métricas.
+
+### Configurando
+
+1.  Em projeto específico para api-gateway, que será um microserviço, adicione as dependência abaixo:
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-config</artifactId>
+</dependency>
+```
+
+2.  Na classe anotada com **@SpringBootApplication** , adicione a anotação **@EnableZuulProxy**.
+
+```java
+@EnableZuulProxy
+@SpringBootApplication
+public class ApiGatewayApplication{
+
+	public static void main(String[] args) {
+		SpringApplication.run(ApiGatewayApplication.class, args);
+	}
+
+}
+```
+
+3.  Assim como o eureka, a configuração da api-gatway ficará no repositório git que será acessado e servido pelo config server anteriormente configurado. 
+Ao invés de application.yml o arquivo deve possuir o nome da aplicação(server.application.name), no caso aqui será api-gateway.yml
+
+Perceba que toda requisição que vier \*/api/order/\* será redirecionada para o microserviço registrado no eureka como order-service-pre.
+Outro é a propriedade ribbon.eureka.enabled=true, que faz com que todo redirecionamento feito pelo zuul, ocorra no modo load balance administrado pelo ribbon.
+
+```yml
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway-pre1
+  profiles: pre1
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka,http://eureka:eureka@127.0.0.1:8762/eureka,http://eureka:eureka@127.0.0.1:8763/eureka
+zuul:
+  prefix: /api
+  routes:
+    order:
+      path: /order/**
+      serviceId: order-service-pre
+    delivery:
+      path: /delivery/**
+      serviceId: delivery-service-pre
+ribbon:
+  eureka:
+    enabled: true
+
+---
+
+server:
+  port: 8081
+spring:
+  application:
+    name: api-gateway-pre1
+  profiles: pre2
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka,http://eureka:eureka@127.0.0.1:8762/eureka,http://eureka:eureka@127.0.0.1:8763/eureka
+zuul:
+  prefix: /api
+  routes:
+    order:
+      path: /order/**
+      serviceId: order-service-pre
+    delivery:
+      path: /delivery/**
+      serviceId: delivery-service-pre
+ribbon:
+  eureka:
+    enabled: true
+```
+*Obs: Como estamos rodando tudo no mesmo host, para evitar conflito de portas, temos dois profiles, simplesmente para subir com duas portas diferentes. Se estivéssemos rodando em hosts diferentes, poderíamos trabalhar apenas com um profile.*
+
+4.  Dentro do projeto, teremos apenas um arquivo bootstrap.yml, que deverá ter o nome da aplicação(spring.application.name) e as configurações para acessar o config-server e obter sua configuração.
+Abaixo, arquivo bootstrap.yml:
+
+
+```yml
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      uri: http://localhost:8888,http://localhost:8889
+      username: config
+      password: config
+      fail-fast: true
+```
+*Como aqui estamos simulando alta disponibilidade, temos dois config-servers setados. Caso o primeiro falhe, ele busca a configuração no segundo. Também informamos usuário e senha definidos no config-server para o microserviço se autenticar.*
+
+### Executando
+
+1.  Na raiz do project eureka-server, build o projeto:
+```
+mvn clean install
+```
+
+2.  Execute o projeto (No exemplo abaixo, para simularmos alta disponibilidade, estaremos startando três instâncias. Cada instância subirá em uma porta.):
+```
+java -jar -Dspring.profiles.active=pre1 target\eureka-server-1.0.0-SNAPSHOT.jar 
+java -jar -Dspring.profiles.active=pre2 target\eureka-server-1.0.0-SNAPSHOT.jar 
+```
+
