@@ -495,3 +495,5 @@ http://localhost:8080/api/order/
 **Resultado da segunda chamada:**
 
 ![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/1b8f891043a4d9ee3ee017b35d870331/load_balance2.PNG)
+
+**Temos os api-gateway roteando o load balancer alternando as requisições entre as duas instâncias de order-service.**
