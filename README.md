@@ -81,3 +81,16 @@ java -jar target\config-server-1.0.0-SNAPSHOT.jar --server.port=8888
 java -jar target\config-server-1.0.0-SNAPSHOT.jar --server.port=8889
 ```
 Observação: No arquivo yml deixamos definido na propriedade port, a porta 8888. Estamos definindo a porta no start, pois estamos considerando que subiremos duas instâncias na mesma máquina. Caso esteja em máquinas diferentes, não é necessário passar usar o parâmetro --server.port.
+
+
+## Testando o Config Server
+
+Abaixo, o repositório com os arquivos de configuração que serão acessados pelo config-server:
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/a80038f1666964a9f07e85cae841c79a/git_config_files.PNG)
+
+
+Accesse a url do config-server, seguido do nome de um dos arquivos presentes no repositório:
+```
+http://localhost:8888/order-service-pre.yml
+```
