@@ -436,6 +436,25 @@ spring:
       fail-fast: true
 ```
 
+
+5. Abaixo o Controller, que implementa uma API que retorna o hostname e a porta que a instância está rodando.  
+
+```java
+@RestController
+public class Controller {
+
+	@Autowired
+	private ApplicationInfoManager applicationInfoManager;
+
+	@GetMapping("/")
+	public String get(HttpServletRequest request) {
+		return "SERVICE: " + applicationInfoManager.getInfo().getAppName() + "\nPORT: "
+				+ applicationInfoManager.getInfo().getPort();
+	}
+
+}
+```
+
 ### Executando
 
 1.  Na raiz do project eureka-server, build o projeto:
@@ -452,3 +471,12 @@ java -jar -Dspring.profiles.active=pre target\order-service-1.0.0-SNAPSHOT.jar
 3.  Perceba que as duas instâncias se registraram no eureka-server. Como possuem o mesmo, temos uma hash no status que os diferencia.
 
 ![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/8a77e50b9cb49ab05482a2151aa0f6c2/eureka_order-service.PNG)
+
+### Testando a API-Gateway e o Load Balance
+
+No browser digite:
+
+*Perceba que estamos fazendo uma requisição para a api de order-service (/order) através da api-gateway (localhost:8080)*
+```
+http://localhost:8080/api/order/
+```
