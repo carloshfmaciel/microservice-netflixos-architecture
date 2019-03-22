@@ -22,10 +22,10 @@ Configurando
 
 Obs: Estamos adicionando o spring security, para que todo e qualquer microserviço que quiser consumir alguma configuração dele, tenha que se autenticar.
 
-2 - Na classe anotada com @SpringBootApplication, adicione a anotação @EnableConfigServer.
+2 - Na classe anotada com **@SpringBootApplication**, adicione a anotação **@EnableConfigServer**.
 
 ```
-@EnableConfigServer
+**@EnableConfigServer**
 @SpringBootApplication
 public class ConfigServerApplication {
 
