@@ -91,7 +91,7 @@ Abaixo, o repositório com os arquivos de configuração que serão acessados pe
 
 
 
-1.  Accesse a url do config-server, seguido do nome de um dos arquivos presentes no repositório:
+1.  Accesse a url do config-server, seguido do nome de um dos arquivos presentes no repositório, acrescido do profile, no caso "-pre":
 ```
 http://localhost:8888/order-service-pre.yml
 ```
