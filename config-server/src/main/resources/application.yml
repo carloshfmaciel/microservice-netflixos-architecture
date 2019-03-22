@@ -1,0 +1,5 @@
+server:  port: 8888
+
+spring:
+  application:
+    name: config-server  cloud:    config:      server:        git:          uri: https://gitlab.com/s4bdigital/devops/microservices-config.git          default-label: master          username: username          password: password          clone-on-start: true          delete-untracked-branches: true          refresh-rate: 600      fail-fast: true        security:    user:      name: config      password: config
