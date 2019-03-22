@@ -1,0 +1,66 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway-pre
+  profiles: pre
+   
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true 
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka,http://eureka:eureka@127.0.0.1:8762/eureka,http://eureka:eureka@127.0.0.1:8763/eureka
+      
+zuul:
+  prefix: /api
+  
+  routes:  
+    order:
+      path: /order/**
+      serviceId: order-service-pre
+
+    delivery:
+      path: /delivery/**
+      serviceId: delivery-service-pre      
+
+ribbon:
+  eureka:
+    enabled: true     
+    
+---
+
+server:
+  port: 0
+
+spring:
+  application:
+    name: api-gateway-stg
+  profiles: stg
+   
+eureka:
+  client:
+    register-with-eureka: true 
+    fetch-registry: true  
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      
+zuul:
+  prefix: /api
+  routes:
+  
+    order:
+      path: /order/**
+      serviceId: order-service-stg
+
+    delivery:
+      path: /delivery/**
+      serviceId: delivery-service-stg
+      
+ribbon:
+  eureka:
+    enabled: true          
