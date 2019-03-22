@@ -202,8 +202,10 @@ Obs: Como estamos rodando tudo no mesmo host, para evitar conflito de portas, te
 
 
 4.  Dentro do projeto, teremos apenas um arquivo bootstrap.yml, que deverá ter o nome da aplicação(spring.application.name) e as configurações para acessar o config-server e obter sua configuração.
-Abaixo, arquivo boostrap.yml:
+Abaixo, arquivo bootstrap.yml:
 
+
+*Como aqui estamos simulando alta disponibilidade, temos dois config-servers setados. Caso o primeiro falhe, ele busca a configuração no segundo. Também informamos usuário e senha definidos no config-server para o microserviço se autenticar.*
 ```yml
 spring:
   application:
