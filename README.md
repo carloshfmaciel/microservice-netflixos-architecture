@@ -393,7 +393,7 @@ Para testarmos tudo, iremos utilizar um microserviço que:
 
 Link: https://gitlab.com/s4bdigital/devops/microservices-poc/tree/master/order-service
 
-Abaixo, configuração do microservico order-service:
+Abaixo, configuração do microservico order-service.yml que deverá ficar no [repositório git](https://gitlab.com/s4bdigital/devops/microservices-config) acessado pelo config-server:
 
 *Obs: Como estaremos rodando duas instâncias na mesma máquina e queremos simular o load balance entre as duas instâncias, é importante que elas possuam o mesmo nome. Por esta razão não estaremos usando profile. Para evitar conflito de portas, setamos como **0**, dessa forma o Spring verifica uma porta livre no host e atribui para o serviço.*
 ```yml
@@ -419,4 +419,19 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+```
+
+4.  Dentro do projeto, teremos apenas um arquivo bootstrap.yml como abaixo:
+
+
+```yml
+spring:
+  application:
+    name: order-service
+  cloud:
+    config:
+      uri: http://localhost:8888,http://localhost:8889
+      username: config
+      password: config
+      fail-fast: true
 ```
