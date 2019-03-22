@@ -100,3 +100,8 @@ http://localhost:8888/order-service-pre.yml
 2.  Como adicionamos o spring security no config-server, será solicitado login e senha para acessar. Digite usuario: config e senha: config, conforme definido no yml do config-server.
 
 ![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/f39c49f23dbbc1e661d9e2024e77ab39/login_config_server.PNG)
+
+
+3.  Pronto! Conseguimos através de uma requisição GET, acessar o conteúdo do arquivo order-service.yml
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/a0bce95a7738bf6b30688b6540adc1e0/resultado_config_server.PNG)
