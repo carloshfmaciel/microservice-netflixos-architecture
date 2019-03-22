@@ -199,3 +199,19 @@ eureka:
 
 ```
 Obs: Como estamos rodando tudo no mesmo host, para evitar conflito de portas, temos dois profiles, simplesmente para subir com duas portas diferentes. Se estivéssemos rodando em hosts diferentes, poderíamos trabalhar apenas com um profile.
+
+
+4.  Dentro do projeto, teremos apenas um arquivo bootstrap.yml, que deverá ter o nome da aplicação(spring.application.name) e as configurações para acessar o config-server e obter sua configuração.
+Abaixo, arquivo boostrap.yml:
+
+```yml
+spring:
+  application:
+    name: eureka-server
+  cloud:
+    config:
+      uri: http://localhost:8888,http://localhost:8889
+      username: config
+      password: config
+      fail-fast: true
+```
