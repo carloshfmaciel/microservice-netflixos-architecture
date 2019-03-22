@@ -26,7 +26,7 @@ Obs: Estamos adicionando o spring security, para que todo e qualquer microservi�
 
 2.  Na classe anotada com **@SpringBootApplication** , adicione a anotação **@EnableConfigServer**.
 
-```
+```java
 @EnableConfigServer
 @SpringBootApplication
 public class ConfigServerApplication {
@@ -52,8 +52,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/carloshfmaciel/spring-cloud-config
-          default-label: develop
+          uri: https://gitlab.com/s4bdigital/devops/microservices-config.git
+          default-label: master
           username: username
           password: password
           clone-on-start: true
@@ -66,3 +66,6 @@ spring:
       name: config
       password: config
 ```
+
+## Executando
+
