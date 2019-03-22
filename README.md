@@ -69,3 +69,15 @@ spring:
 
 ## Executando
 
+
+1.  Na raiz do project config-server, build o projeto:
+```
+mvn clean install
+```
+
+2.  Execute o projeto:
+```
+java -jar target\config-server-1.0.0-SNAPSHOT.jar --server.port=8888
+java -jar target\config-server-1.0.0-SNAPSHOT.jar --server.port=8889
+```
+Observação: No arquivo yml deixamos definido na propriedade port, a porta 8888. Estamos definindo a porta no start, pois estamos considerando que subiremos duas instâncias na mesma máquina. Caso esteja em máquinas diferentes, não é necessário passar usar o parâmetro --server.port.
