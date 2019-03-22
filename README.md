@@ -7,7 +7,7 @@ Microserviço que centraliza todas as configurações(yml ou properties), de tod
 ### Configurando
 
 
-1.  adicione as dependência abaixo:
+1.  Adicione as dependência abaixo:
 
 ```xml
 <dependency>
@@ -115,4 +115,19 @@ Em uma arquitetura básica, temos um ou mais servidores para registro, ou seja, 
 
 ### Configurando Eureka Server
 
+1.  Adicione as dependência abaixo:
 
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-config</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
