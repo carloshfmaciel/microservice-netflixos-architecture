@@ -4,6 +4,8 @@
 
 Microserviço que centraliza todas as configurações(yml ou properties), de todos os microserviços.
 
+[Link para baixar o projeto](https://gitlab.com/s4bdigital/devops/microservices-poc.git)
+
 ### Configurando
 
 
@@ -112,6 +114,8 @@ http://localhost:8888/order-service/pre
 Eureka implementa os patterns service registry/service discovery.
 
 Em uma arquitetura básica, temos um ou mais servidores para registro, ou seja, onde os microserviços irão se registrar.
+
+[Link para baixar o projeto](https://gitlab.com/s4bdigital/devops/microservices-poc.git)
 
 ### Configurando Eureka Server
 
@@ -248,6 +252,8 @@ http://localhost:8762
 
 Zuul implementa o pattern de API-Gateway. Funciona como um centralizador, interceptando as requisições e encaminhando as mesmas para os microserviços. Funciona integrado com o Eureka(Service Registry/Service Discovery), como também com o Ribbon(Load Balancer). 
 Possui filtros implementáveis, com os quais podemos interceptar as requisições antes e depois do routing, possibilitando aplicar recursos de segurança e coleta de métricas.
+
+[Link para baixar o projeto](https://gitlab.com/s4bdigital/devops/microservices-poc.git)
 
 ### Configurando
 
