@@ -379,6 +379,9 @@ mvn clean install
 java -jar -Dspring.profiles.active=pre1 target\api-gateway-1.0.0-SNAPSHOT.jar 
 java -jar -Dspring.profiles.active=pre2 target\api-gateway-1.0.0-SNAPSHOT.jar 
 ```
+2.  Percebe que as duas instâncias se registraram no eureka-server.
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/88f11b7a5762ac8ad9f35c7b90e73ccd/eureka_api-gateway.PNG)
 
 # Testando tudo
 
@@ -390,4 +393,5 @@ Para testarmos tudo, iremos utilizar um microserviço que:
 
 Link: https://gitlab.com/s4bdigital/devops/microservices-poc/tree/master/order-service
 
+Abaixo, configuração do microservico order-service
 
