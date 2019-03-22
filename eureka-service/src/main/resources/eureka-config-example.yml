@@ -1,0 +1,5 @@
+server:  port: 8761
+
+spring:
+  application:
+    name: eureka-server-pre  profiles: pre    eureka:  client:    register-with-eureka: false    fetch-registry: false    ---server:  port: 8762spring:  application:    name: eureka-server-stg  profiles: stg    eureka:  client:    register-with-eureka: false    fetch-registry: false
