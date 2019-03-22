@@ -131,3 +131,18 @@ Em uma arquitetura básica, temos um ou mais servidores para registro, ou seja, 
 	<artifactId>spring-boot-starter-security</artifactId>
 </dependency>
 ```
+
+2.  Na classe anotada com **@SpringBootApplication** , adicione a anotação **@EnableEurekaServer**.
+
+```java
+@EnableEurekaServer
+@SpringBootApplication
+public class EurekaServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EurekaServiceApplication.class, args);
+	}
+
+}
+```
+
