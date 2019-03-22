@@ -379,7 +379,7 @@ mvn clean install
 java -jar -Dspring.profiles.active=pre1 target\api-gateway-1.0.0-SNAPSHOT.jar 
 java -jar -Dspring.profiles.active=pre2 target\api-gateway-1.0.0-SNAPSHOT.jar 
 ```
-2.  Percebe que as duas instâncias se registraram no eureka-server.
+3.  Perceba que as duas instâncias se registraram no eureka-server.
 
 ![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/88f11b7a5762ac8ad9f35c7b90e73ccd/eureka_api-gateway.PNG)
 
@@ -435,3 +435,20 @@ spring:
       password: config
       fail-fast: true
 ```
+
+### Executando
+
+1.  Na raiz do project eureka-server, build o projeto:
+```
+mvn clean install
+```
+
+2.  Execute o projeto (No exemplo abaixo, para simularmos alta disponibilidade, estaremos startando duas instâncias, com o mesmo profile, porém, cada instância subirá em uma porta.):
+```
+java -jar -Dspring.profiles.active=pre target\order-service-1.0.0-SNAPSHOT.jar 
+java -jar -Dspring.profiles.active=pre target\order-service-1.0.0-SNAPSHOT.jar 
+```
+
+3.  Perceba que as duas instâncias se registraram no eureka-server. Como possuem o mesmo, temos uma hash no status que os diferencia.
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/8a77e50b9cb49ab05482a2151aa0f6c2/eureka_order-service.PNG)
