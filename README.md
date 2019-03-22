@@ -285,8 +285,8 @@ public class ApiGatewayApplication{
 3.  Assim como o eureka, a configuração da api-gatway ficará no repositório git que será acessado e servido pelo config server anteriormente configurado. 
 Ao invés de application.yml o arquivo deve possuir o nome da aplicação(server.application.name), no caso aqui será api-gateway.yml
 
-Perceba que toda requisição que vier \*/api/order/\* será redirecionada para o microserviço registrado no eureka como order-service-pre.
-Outro é a propriedade ribbon.eureka.enabled=true, que faz com que todo redirecionamento feito pelo zuul, ocorra no modo load balance administrado pelo ribbon.
+Perceba que toda requisição que vier **\*/api/order/\*** será redirecionada para o microserviço registrado no eureka como **order-service-pre**.
+Para que os redirecionamentos feito aos microserviços pelo zuul funcione em modo load balancer, habilitamos o **Ribbon**, através da propriedade **ribbon.eureka.enabled=true**.
 
 ```yml
 server:
