@@ -480,3 +480,12 @@ No browser digite:
 ```
 http://localhost:8080/api/order/
 ```
+
+**Resultado da primeira chamada:**
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/eb5b99a333ed0af0836372bece4a6b2f/load_balance1.PNG)
+
+
+**Resultado da segunda chamada:**
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/1b8f891043a4d9ee3ee017b35d870331/load_balance2.PNG)
