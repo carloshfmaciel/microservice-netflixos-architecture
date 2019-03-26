@@ -111,11 +111,27 @@ http://localhost:8888/order-service/pre
 
 # Spring Cloud Netflix Eureka - Service Registry / Service Discovery
 
-Eureka implementa os patterns service registry/service discovery.
+Eureka implementa os patterns **service registry/service discovery**.
 
 Em uma arquitetura básica, temos um ou mais servidores para registro, ou seja, onde os microserviços irão se registrar.
 
-[Link para baixar o projeto](https://gitlab.com/s4bdigital/devops/microservices-poc.git)
+**Service registry** <br>
+*Microserviços se registram no servidor(Eureka), informando seus respectivos nomes(application.name) e endereço ip*
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/a93d9be777c35f30250c61947d574e6b/eureka_self_registration.PNG)
+
+
+**Service discovery** <br> 
+*Client Side - Microserviço se conecta no servidor(Eureka) e obtém a lista de application name, ip address e faz a conexão com o outro microserviço*
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/4ee10f266e603e05e5be745985a1005b/eureka_client_discovery.PNG)
+
+
+**Service discovery** <br>
+*Server Side - Um client(microserviço, browser, mobile app) faz um requisição para a api-gateway(server side), que obtém uma lista de microserviços(nome e endereço ip) do **Eureka**, roteando a requisição do client para o microserviço.*
+
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/40cad2ef9bc2c901125487510edd2733/eureka_server_discovery.PNG)
+
 
 ### Configurando Eureka Server
 
