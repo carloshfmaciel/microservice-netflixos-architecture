@@ -1,5 +1,7 @@
 # Arquitetura Microservices - Spring Cloud Netflix
 
+![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/52568bc51258de604a19e58640247676/arquitetura_netflix.PNG)
+
 # Spring Cloud Config Server
 
 Microserviço que centraliza todas as configurações(yml ou properties), de todos os microserviços.
