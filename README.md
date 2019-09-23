@@ -6,7 +6,7 @@
 
 Microserviço que centraliza todas as configurações(yml ou properties), de todos os microserviços.
 
-[Link para baixar o projeto](https://gitlab.com/s4bdigital/devops/microservices-poc.git)
+[Link para baixar o projeto](https://github.com/carloshfmaciel/microservice-netflixos-architecture.git)
 
 ### Configurando
 
