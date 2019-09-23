@@ -1,6 +1,6 @@
 # Arquitetura Microservices - Spring Cloud Netflix
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/52568bc51258de604a19e58640247676/arquitetura_netflix.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/arquitetura_netflix.PNG)
 
 # Spring Cloud Config Server
 
@@ -91,7 +91,7 @@ Observação: No arquivo yml deixamos definido na propriedade port, a porta 8888
 
 Abaixo, o repositório com os arquivos de configuração que serão acessados pelo config-server:
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/a80038f1666964a9f07e85cae841c79a/git_config_files.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/git_config_files.PNG)
 
 
 
@@ -103,12 +103,12 @@ http://localhost:8888/order-service/pre
 
 2.  Como adicionamos o spring security no config-server, será solicitado login e senha para acessar. Digite usuario: config e senha: config, conforme definido no yml do config-server.
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/f39c49f23dbbc1e661d9e2024e77ab39/login_config_server.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/login_config_server.PNG)
 
 
 3.  Pronto! Conseguimos através de uma requisição GET, acessar o conteúdo do arquivo order-service.yml
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/a0bce95a7738bf6b30688b6540adc1e0/resultado_config_server.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/resultado_config_server.PNG)
 
 
 # Spring Cloud Netflix Eureka - Service Registry / Service Discovery
@@ -120,19 +120,19 @@ Em uma arquitetura básica, temos um ou mais servidores para registro, ou seja, 
 **Service registry** <br>
 *Microserviços se registram no servidor(Eureka), informando seus respectivos nomes(application.name) e endereço ip*
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/a93d9be777c35f30250c61947d574e6b/eureka_self_registration.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/eureka_self_registration.PNG)
 
 
 **Service discovery** <br> 
 *Client Side - Microserviço se conecta no servidor(Eureka) e obtém a lista de application name, ip address e faz a conexão com o outro microserviço*
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/4ee10f266e603e05e5be745985a1005b/eureka_client_discovery.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/eureka_client_discovery.PNG)
 
 
 **Service discovery** <br>
 *Server Side - Um client(microserviço, browser, mobile app) faz um requisição para a api-gateway(server side), que obtém uma lista de microserviços(nome e endereço ip) do **Eureka**, roteando a requisição do client para o microserviço.*
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/40cad2ef9bc2c901125487510edd2733/eureka_server_discovery.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/eureka_server_discovery.PNG)
 
 
 ### Configurando Eureka Server
@@ -263,7 +263,7 @@ http://localhost:8762
 
 3.  Pronto! Percebemos que ambos os servers subiram e se auto registraram um no outro. Dessa forma, quando algum serviço se autoregistrar em alguma das instâncias eureka, o registro será replicado para todas as instâncias eureka.
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/e4fa16fb6d554d6d55c991e33d777981/eureka_screen.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/eureka_screen.PNG)
 
 
 # Spring Cloud Netflix Zuul - Api Gateway
@@ -405,7 +405,7 @@ java -jar -Dspring.profiles.active=pre2 target\api-gateway-1.0.0-SNAPSHOT.jar
 ```
 3.  Perceba que as duas instâncias se registraram no eureka-server.
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/88f11b7a5762ac8ad9f35c7b90e73ccd/eureka_api-gateway.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/eureka_api-gateway.PNG)
 
 # Testando tudo
 
@@ -494,7 +494,7 @@ java -jar -Dspring.profiles.active=pre target\order-service-1.0.0-SNAPSHOT.jar
 
 3.  Perceba que as duas instâncias se registraram no eureka-server. Como possuem o mesmo, temos uma hash no status que os diferencia.
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/8a77e50b9cb49ab05482a2151aa0f6c2/eureka_order-service.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/eureka_order-service.PNG)
 
 ### Testando a API-Gateway e o Load Balance
 
@@ -507,11 +507,11 @@ http://localhost:8080/api/order/
 
 **Resultado da primeira chamada:**
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/eb5b99a333ed0af0836372bece4a6b2f/load_balance1.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/load_balance1.PNG)
 
 
 **Resultado da segunda chamada:**
 
-![image](https://gitlab.com/s4bdigital/sites-team/kanban/uploads/1b8f891043a4d9ee3ee017b35d870331/load_balance2.PNG)
+![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/load_balance2.PNG)
 
 **Temos os api-gateway roteando o load balancer alternando as requisições entre as duas instâncias de order-service.**
