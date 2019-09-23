@@ -1,3 +1,7 @@
+Autor: Carlos Maciel<br>
+Email: carloshfmaciel@gmail.com<br>
+Linkedin: https://www.linkedin.com/in/carlos-maciel-64796117<br>
+
 # Arquitetura Microservices - Spring Cloud Netflix
 
 ![image](https://github.com/carloshfmaciel/microservice-netflixos-architecture/blob/master/screenshots/arquitetura_netflix.PNG)
